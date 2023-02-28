@@ -1,0 +1,12 @@
+
+@name simple rainbow
+runOnTick(1)
+
+owner():setColor(vec(random(255),random(255),random(255)))
+owner():setMaterial("models/debug/debugwhite")
+#[
+    Very Simple Pastel Rainbow
+    use "reset" e2 to disable
+]#
+
+ 
