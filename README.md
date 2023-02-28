@@ -10,3 +10,5 @@
 
 <strong> \SteamLibrary\steamapps\common\GarrysMod\garrysmod\data\advdupe2 </strong>
 <strong> \SteamLibrary\steamapps\common\GarrysMod\garrysmod\data\expression2 </strong>
+
+<em> All of the dupes are made for the DarkRp map rp_downtown_tits_v2. Except for the dupes that are titled "anywhere_(dupename)" provided you have enough space of course. </em>
