@@ -1,0 +1,88 @@
+
+@name Rainbow Wirefame + Accessories
+@persist Speed Rainbow RB
+@inputs E1:entity E2:entity E3:entity E4:entity E5:entity E6:entity E7:entity E8:entity E9:entity E10:entity E11:entity E12:entity E13:entity E14:entity E15:entity E16:entity
+@outputs Textrgb:vector
+#|To Use|
+#Place E2 On The Thing You Want To Effect
+# Use Wiring Tool To Connect E1-E19 To Whatever Thing You Want To Effect
+# RB 1:fade through rainbow with material shiny
+# RB 2:fade through rainbow with material wireframe
+# RB 3:make a grav ball that is rainbow
+# RB 4:make a gray one way wall
+# RB 5:output rainbow
+    local E = entity():isWeldedTo()
+    RBS = 0
+    RB = 3
+    TARGET=owner()
+    holoCreate(1)
+    holoCreate(12)
+    holoModel(1,"models/props_phx/gears/bevel9.mdl")
+    holoMaterial(1,"models/wireframe")
+    holoAlpha(1,90)
+    holoModel(12,"models/maxofs2d/hover_rings.mdl")
+    holoMaterial(12,"models/wireframe")
+    holoAlpha(12,60)
+    holoPos(1,entity():pos()+vec(0,0,10))
+    if(RB==3){
+    holoScaleUnits(12,vec(100,100,100))
+    holoScaleUnits(1,vec(15,15,10))
+    holoParentAttachment(1,TARGET, "eyes")
+    holoParentAttachment(12,TARGET, "eyes")
+    }
+    
+runOnTick(1)
+    Col=((hsv2rgb((curtime()*80)%360,1,1)))
+    holoColor(1,Col)
+    holoColor(12,Col)
+        E1:setColor(Col)
+        E2:setColor(Col)
+        E3:setColor(Col)
+        E4:setColor(Col)
+        E5:setColor(Col)
+        E6:setColor(Col)
+        E7:setColor(Col)
+        E8:setColor(Col)
+        E9:setColor(Col)
+        E10:setColor(Col)
+        if(RB==1){
+        E1:setMaterial("models/shiny")
+        E2:setMaterial("models/shiny")
+        E3:setMaterial("models/shiny")
+        E4:setMaterial("models/shiny")
+        E5:setMaterial("models/shiny")
+        E6:setMaterial("models/shiny")
+        E7:setMaterial("models/shiny")
+        E8:setMaterial("models/shiny")
+        E9:setMaterial("models/shiny")
+        E10:setMaterial("models/shiny")
+        E11:setMaterial("models/wireframe")
+        E12:setMaterial("models/wireframe")
+        E13:setMaterial("models/wireframe")
+        E14:setMaterial("models/wireframe")
+        E15:setMaterial("models/wireframe")
+        E16:setMaterial("models/wireframe")
+}
+if(RB == 3){
+    holoPos(12,TARGET:attachmentPos("eyes"))
+    holoPos(1,TARGET:attachmentPos("eyes")+ vec(0,0,7.5))
+    holoColor(1,Col)
+    holoColor(12,Col)
+    holoPos(12,TARGET:attachmentPos("eyes"))
+    holoPos(12,(holoEntity(12):pos() - vec(0,0,15)))
+    holoAng(1,TARGET:attachmentAng("eyes"))
+    holoParentAttachment(1,TARGET, "eyes")
+    holoParentAttachment(12,TARGET, "eyes")
+    owner():setColor(Col)
+    owner():setMaterial("models/wireframe")
+}
+runOnTick(1)
+entity():setColor(Col)
+entity():setMaterial("models/shiny")
+owner():weapon():setColor((hsv2rgb((curtime()*80)%360,1,1)))
+owner():weapon():setMaterial("models/wireframe")
+interval(1)
+Textrgb=((hsv2rgb((curtime()*10)%360,1,1)))
+
+
+

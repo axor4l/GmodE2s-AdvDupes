@@ -1,0 +1,81 @@
+@name Chat Based Model Changer
+@persist State Type:string Hint Reset
+interval(50)
+#Say 'normal' to be normal
+#Say 'shiny' to be shiny
+#Say 'flashy' to be flashy
+#Say 'hide' to be invisible
+#Say 'electric' to be electrified
+#Say 'state' to be hinted what state your in
+#Say 'reset' after you have used the state command so you can use it again
+if (owner():lastSaid() == "normal") {State=1}
+if (owner():lastSaid() == "hide") {State=2}
+if (owner():lastSaid() == "flashy") {State = 5}
+if (owner():lastSaid() == "holo") {State = 9}
+if (owner():lastSaid() == "electric") {State = 20}
+if (owner():lastSaid() == "state" & Hint == 0) {Hint = 1}
+if (owner():lastSaid() == "reset") {Reset = 1}
+if (owner():lastSaid() == "redclear") {State = 99}
+if (owner():lastSaid() == "glass") {State = 75}
+if (owner():lastSaid() == "void") {State = 66}
+if (owner():lastSaid() == "rainline") {State = 66}
+if (State == 1) {
+owner():setMaterial("normalplz")
+owner():setColor(255,255,255)
+Type = "You are Normal"
+}
+if (State == 2) {
+
+owner():setMaterial("Models/effects/vol_light001")
+State = 0
+Type = "You are Hidden"
+}
+if (State == 5) {
+owner():setColor(random(255),random(255),random(255))
+owner():setMaterial("models/wireframe")
+State = 6
+Type = "You are Flashy"
+}
+if (State == 6) {
+owner():setColor(random(255),random(255),random(255))
+}
+if (State == 9) {
+owner():setMaterial("models/alyx/emptool_glow")
+owner():setColor(random(255),random(255),random(255))
+State = 0
+Type = "You are Shiny"
+}
+if (State == 20) {
+owner():setMaterial("models/alyx/emptool_glow")
+owner():setColor(255,255,255)
+State = 0  
+Type = "You are Electric"
+}
+if (Hint == 1) {hint(Type,5)
+Hint = -1    
+}
+if (Reset == 1) {
+Hint = 0
+Reset = 0
+}
+if (State == 99) {
+owner():setMaterial("models/props_lab/Tank_Glass001")
+Type = "You are Red Clear"
+}
+if (State == 75) {
+owner():setMaterial("models/shadertest/shader5")
+Type = "You are glass"
+}
+if (State == 66) {
+owner():setMaterial("models/rendertarget")
+Type = "You are Pitch Black"
+}
+if (State == 88) {
+owner():setMaterial("models/QXM/LightLinesRed_Tool")
+owner():setColor(random(255),random(255),random(255))
+Type = "You are Rainbow lines fade"
+}
+#[
+Modified By Axoral
+
+#]

@@ -1,0 +1,7 @@
+@name Ninja Style
+@inputs 
+@outputs 
+runOnTick(1)
+
+if(owner():isCrouch()){owner():setMaterial("models/effects/vol_light001")}
+else{owner():setMaterial("")}
